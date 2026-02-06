@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:offline_first_architecture/features/users/domain/entities/user.dart';
 import 'package:offline_first_architecture/features/users/domain/repository/user_repository.dart';
-import 'package:offline_first_architecture/presentation/bloc/user_bloc.dart';
-import 'package:offline_first_architecture/presentation/bloc/user_event.dart';
-import 'package:offline_first_architecture/presentation/bloc/user_state.dart';
+import 'package:offline_first_architecture/features/users/presentation/bloc/user_bloc.dart';
+import 'package:offline_first_architecture/features/users/presentation/bloc/user_event.dart';
+import 'package:offline_first_architecture/features/users/presentation/bloc/user_state.dart';
 
 class MockUserRepository extends Mock implements UserRepository {}
 

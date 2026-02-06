@@ -27,13 +27,12 @@ void main() {
 
     syncManager = SyncController(
       hiveBoxName: 'users',
-      baseUrl: 'https://test.com',
-      connectivity: connectivity,
+      baseUrl: 'https://test.com'
     );
   });
 
   test('trySync does nothing when offline', () async {
-    await syncManager.trySync();
+    await syncManager.requestSync();
 
     verify(() => connectivity.checkConnectivity()).called(1);
   });
