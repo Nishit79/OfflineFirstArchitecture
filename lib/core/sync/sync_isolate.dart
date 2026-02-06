@@ -1,4 +1,3 @@
-import 'dart:isolate';
 import 'package:hive/hive.dart';
 import 'package:dio/dio.dart';
 import 'package:offline_first_architecture/core/sync/sync_payload.dart';

@@ -1,13 +1,13 @@
-import '../../../../core/sync/sync_manager.dart';
+import '../../../../core/sync/sync_controller.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repository/user_repository.dart';
 import '../local/user_local_datasource.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserLocalDataSource local;
-  final SyncManager syncManager;
+  final SyncController syncController;
 
-  UserRepositoryImpl(this.local, this.syncManager);
+  UserRepositoryImpl(this.local, this.syncController);
 
   @override
   Stream<List<User>> watchUsers() => local.watchUsers();
@@ -15,9 +15,11 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> addUser(User user) async {
     await local.insert(user);
-    syncManager.trySync();
+    await syncController.requestSync();
   }
 
   @override
-  Future<void> sync() => syncManager.performSync();
+  Future<void> sync() async {
+    await syncController.requestSync();
+  }
 }

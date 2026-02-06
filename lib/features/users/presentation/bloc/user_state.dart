@@ -1,6 +1,6 @@
 
 
-import '../../features/users/domain/entities/user.dart';
+import '../../domain/entities/user.dart';
 
 /// Base class for all user states
 abstract class UserState {

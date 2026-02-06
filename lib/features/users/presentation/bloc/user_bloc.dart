@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/users/domain/repository/user_repository.dart';
+import '../../domain/repository/user_repository.dart';
 import 'user_event.dart';
 import 'user_state.dart';
 

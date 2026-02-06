@@ -7,9 +7,9 @@ import '../../features/users/data/local/user_local_datasource.dart';
 import '../../features/users/data/remote/user_remote_datasource.dart';
 import '../../features/users/data/remote/user_repository_impl.dart';
 import '../../features/users/domain/repository/user_repository.dart';
-import '../../presentation/bloc/user_bloc.dart';
+import '../../features/users/presentation/bloc/user_bloc.dart';
 import '../network/api_client.dart';
-import '../sync/sync_manager.dart';
+import '../sync/sync_controller.dart';
 
 final sl = GetIt.instance;
 
@@ -27,12 +27,11 @@ Future<void> setupDI() async {
         () => UserRemoteDataSource(sl<ApiClient>()),
   );
 
-  // Sync manager
+  // Sync controller
   sl.registerLazySingleton(
-        () => SyncManager(
+        () => SyncController(
       hiveBoxName: 'users',
-      baseUrl: 'https://api.example.com',
-      connectivity: sl<Connectivity>(),
+      baseUrl: 'https://dummyjson.com'
     ),
   );
 
@@ -40,7 +39,7 @@ Future<void> setupDI() async {
   sl.registerLazySingleton<UserRepository>(
         () => UserRepositoryImpl(
       sl<UserLocalDataSource>(),
-      sl<SyncManager>(),
+      sl<SyncController>(),
     ),
   );
 
